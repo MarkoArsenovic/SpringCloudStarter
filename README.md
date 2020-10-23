@@ -76,15 +76,15 @@ RabbitMQ can be deployed in distributed and federated configurations to meet hig
 
 In order to run this starter application locally you need to have [Docker](https://www.docker.com/) and [Docker-Compose](https://docs.docker.com/compose/install/) installed on your machine.
   
-In order to run the Cloud Starter development application, you need to provide in host environment variables your GitLab repo credentials for config server to pull configuration for microservices.
-* GITLAB_EMAIL
-* GITLAB_PASSWORD  
+In order to run the Cloud Starter development application, you need to provide in host environment variables your GitHub repo credentials for config server to pull configuration for microservices.
+* GITHUB_EMAIL
+* GITHUB_PASSWORD  
 Also, you can replace env placeholders with credentials in docker-compose file.
   
 After docker is installed and you configured credentials for Config Server, you can start everything up by executing the following commands:
 
 ```bash
-git clone http://gitlab.panonit.com/marko.arsenovic/SpringCloudStarter.git
+git clone https://github.com/MarkoArsenovic/SpringCloudStarter.git
 cd SpringCloudStarter/source
 docker-compose up --build
 ```
