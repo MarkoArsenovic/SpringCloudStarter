@@ -1,0 +1,33 @@
+#panonit-register-page-wrapper {
+    min-height: 100vh;
+    background: url("../../assets/images/cloud_native.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.card {
+    background: none !important;
+    width: 525px;
+    max-width: 95vw;
+    border-width: 1px;
+}
+
+.card-body {
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+#panonit-copyright {
+    font-size: 10px;
+    color: #6c757d;
+    margin-top: 10px;
+}
+
+#panonit-logo {
+    margin-top: 20px;
+}

@@ -1,0 +1,24 @@
+<app-progress-bar></app-progress-bar>
+
+<div id="panonit-register-page-wrapper">
+
+    <!-- Invisible element added for flexbox space-between alignment -->
+    <div id="panonit-invisible-element"></div>
+
+    <div class="card">
+
+        <div class="card-body">
+
+            <router-outlet></router-outlet>
+
+            <div class="d-flex align-items-center justify-content-center" id="panonit-copyright">
+                <span>&copy;&nbsp;{{currentYear}}&nbsp;PanonIT.&nbsp;All rights reserved.</span>
+            </div>
+
+        </div>
+
+    </div>
+
+    <img id="panonit-logo" src="../../assets/images/logos/panonit_logo_light-small.png" alt="">
+
+</div>

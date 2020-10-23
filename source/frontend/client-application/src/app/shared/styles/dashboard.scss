@@ -1,0 +1,284 @@
+.panonit-dashboard-first-row, .panonit-dashboard-second-row, .panonit-dashboard-description {
+    margin-bottom: .5rem;
+}
+
+.panonit-dashboard-first-row h3 {
+    margin-bottom: 0;
+    /* text-decoration: underline;
+    font-size: 30px; */
+}
+
+.panonit-dashboard-first-row i {
+    font-size: 30px;
+}
+
+.panonit-dashboard-first-row i {
+    margin-left: 10px;
+}
+
+.panonit-dashboard-first-row .panonit-right-element i.fas.fa-sync {
+    font-size: 28px;
+}
+
+.panonit-dashboard-first-row .panonit-right-element {
+    display: flex;
+    align-items: center;
+}
+
+.wizard a {
+    background: #444;
+    color: white;
+    font-size: 12px;
+    line-height: 12px;
+    display: inline-block;
+    margin-right: 5px;
+    min-width: 100px;
+    outline: none;
+    padding: 10px 20px 10px;
+    position: relative;
+    text-decoration: none;
+    // height: 32px;
+}
+
+.wizard a:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+/* Adds the cut out on the left side of the tab */
+.wizard a:before {
+    width: 0;
+    height: 0;
+    border-top: 16px inset transparent;
+    border-bottom: 16px inset transparent;
+    border-left: 14px solid #e8e8e8;
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+}
+
+/* Adds the arrow on the right side of the tab */
+.wizard a:after {
+    width: 0;
+    height: 0;
+    border-top: 16px inset transparent;
+    border-bottom: 16px inset transparent;
+    border-left: 14px solid #444;
+    position: absolute;
+    content: "";
+    top: 0;
+    right: -14px;
+    z-index: 2;
+}
+
+/* Squares the start and end of the tab bar */
+.wizard a:first-child:before,
+.wizard a:last-child:after {
+    border: none;
+}
+
+/* Rounds the corners */
+.wizard a:first-child {
+    border-radius: 5px 0 0 5px;
+}
+
+.wizard a:last-child {
+    border-radius: 0 5px 5px 0;
+}
+
+.wizard .active {
+    background: #20a9c9;
+    color: #fff;
+}
+
+/* Adds the right arrow after the tab */
+.wizard .active:after {
+    border-left-color: #20a9c9;
+}
+
+.panonit-dashboard-description {
+    font-size: 12px;
+    text-align: justify;
+}
+
+table {
+    width: 100%;
+}
+
+td {
+    padding: 18px !important;
+}
+
+th {
+    padding: 10px 18px !important;
+}
+
+::ng-deep button.mat-sort-header-button {
+    text-align: left !important;
+}
+
+td.mat-cell:first-of-type, td.mat-footer-cell:first-of-type, th.mat-header-cell:first-of-type {
+    padding-left: 24px !important;
+}
+
+td.mat-cell:last-of-type, td.mat-footer-cell:last-of-type, th.mat-header-cell:last-of-type {
+    padding-right: 24px !important;
+}
+
+.panonit-table-default-filter-input-container {
+    font-size: 14px;
+    width: 100%;
+}
+
+i {
+    font-size: 21px;
+    cursor: pointer;
+    color: #444;
+}
+
+.panonit-view-details-icon {
+    font-size: 15px;
+}
+
+.panonit-table-cell-for-more-link {
+    text-align: right;
+}
+
+.panonit-filter-fields-bootstrap-container {
+    padding-left: 0;
+    padding-right: 0;
+    margin-bottom: 10px;
+}
+
+.panonit-filter-fields-bootstrap-row {
+    align-items: center;
+}
+
+.panonit-table-filter-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.panonit-table-filter {
+    flex: 1;
+}
+
+.panonit-clear-filter-container {
+    margin-left: 10px;
+}
+
+.panonit-clear-all-filters-container {
+    margin-bottom: 5px;
+}
+
+.panonit-clear-all-filters {
+    font-size: 12px;
+    color: #e41e26;
+    cursor: pointer;
+}
+
+@media (min-width: 576px) {
+    .panonit-table-row:hover {
+        background-color: #f5f6f6;
+    }
+}
+
+/* // Extra large devices (large desktops)
+// No media query since the extra-large breakpoint has no upper bound on its width */
+
+/* // Large devices (desktops, less than 1200px) */
+
+@media (max-width: 1199.98px) {
+    td.mat-cell:first-of-type, td.mat-footer-cell:first-of-type, th.mat-header-cell:first-of-type {
+        padding-left: 20px !important;
+    }
+    td.mat-cell:last-of-type, td.mat-footer-cell:last-of-type, th.mat-header-cell:last-of-type {
+        padding-right: 20px !important;
+    }
+}
+
+/* // Medium devices (tablets, less than 992px) */
+
+@media (max-width: 991.98px) {}
+
+/* // Small devices (landscape phones, less than 768px) */
+
+@media (max-width: 767.98px) {
+    .panonit-filter-fields-bootstrap-container {
+        margin-bottom: 20px;
+    }
+
+    td, th {
+        /* width: auto !important; */
+        padding-left: 5px !important;
+        padding-right: 5px !important;
+    }
+    td.mat-cell {
+        /* border-bottom: none; */
+    }
+    td.mat-cell:first-of-type, td.mat-footer-cell:first-of-type, th.mat-header-cell:first-of-type {
+        padding-left: 10px !important;
+    }
+    td.mat-cell:last-of-type, td.mat-footer-cell:last-of-type, th.mat-header-cell:last-of-type {
+        padding-right: 10px !important;
+    }
+    .panonit-table-row {
+        border-top: 1px solid #666666;
+    }
+    .panonit-table-row:last-child {
+        border-bottom: 1px solid #666666;
+    }
+    .panonit-table-row:nth-child(odd) {
+        background-color: #f5f6f6;
+    }
+    td:hover {
+        background-color: #ddd;
+    }
+    /* .mat-header-row {
+        display: none;
+    } */
+    .mat-header-row th {
+        display: inline-block;
+        border-bottom: 0;
+        border-right: 1px solid rgba(0, 0, 0, .12);
+        margin: 5px;
+    }
+    .mat-header-row th:last-child {
+        border-right: 0;
+    }
+    td {
+        display: block;
+        text-align: right;
+        padding: 10px !important;
+    }
+    tr td:last-child {
+        padding-bottom: 5px;
+        border-bottom: 0;
+    }
+    /* tr:last-child td:last-child {
+        padding-bottom: 0;
+    } */
+    tr td:first-child {
+        padding-top: 5px;
+        border-top: 0;
+    }
+    /* tr:first-child td:first-child {
+        padding-top: 0;
+    } */
+    td[data-th]:before {
+        content: attr(data-th);
+        font-weight: bold;
+        float: left;
+        margin-right: 10px;
+    }
+    .panonit-table-cell-for-more-link, .panonit-table-header-for-more-link, .panonit-action-icons-header {
+        display: none !important;
+    }
+}
+
+/* // Extra small devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) {
+    
+}

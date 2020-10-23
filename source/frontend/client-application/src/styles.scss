@@ -1,0 +1,162 @@
+/* You can add global styles to this file, and also import other style files */
+
+* {
+  outline: none !important;
+}
+
+body {
+  font-family: "Liberation Sans Local", Arial, sans-serif !important;
+  margin: 0;
+}
+
+/* not(i) excludes icons */
+*:not(i){
+  font-family: "Liberation Sans Local", Arial, sans-serif !important;
+}
+
+mat-icon {
+  font-family: "Material Icons" !important;
+}
+
+@font-face {
+  font-family: "Liberation Sans Local";
+  src: url("./assets/fonts/liberation-sans/LiberationSans-Regular-webfont.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Liberation Sans Local";
+  src: url("./assets/fonts/liberation-sans/LiberationSans-Bold-webfont.woff") format("woff");
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: "Liberation Sans Local";
+  src: url("./assets/fonts/liberation-sans/LiberationSans-Italic-webfont.woff") format("woff");
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Liberation Sans Local";
+  src: url("./assets/fonts/liberation-sans/LiberationSans-BoldItalic-webfont.woff") format("woff");
+  font-weight: bold;
+  font-style: italic;
+}
+
+a {
+  color: #20a9c9;
+}
+
+// Targets form field when it showes an error message
+mat-form-field.mat-form-field.mat-form-field-invalid {
+  margin-bottom: 10px;
+}
+
+.mat-stroked-button {
+  background: #ffffff;
+  font-weight: bold;
+  color: #20a9c9;
+}
+
+// Remove icon
+i.far.fa-trash-alt {
+  color: #e41e26;
+}
+
+// Targets error messages in bootstrap forms
+.alert.alert-danger,
+.alert.alert-info {
+  margin-top: 8px;
+}
+
+.panonit-tooltip {
+  font-size: 12px;
+}
+
+.panonit-table-overflow-div {
+  overflow-x: auto;
+}
+
+.mat-simple-snackbar-action {
+  color: #20a9c9;
+}
+
+.mat-snack-bar-container {
+  position: relative;
+  bottom: 25px;
+  border: 1px solid #ddd;
+  background-color: #111111;
+  box-shadow: 0 3px 5px -1px rgba(100, 100, 100, 0.5), 0 6px 10px 0 rgba(100, 100, 100, 0.35),
+    0 1px 18px 0 rgba(100, 100, 100, 0.3);
+}
+
+.panonit-form-buttons-container {
+  float: right;
+}
+
+.panonit-hidden-field-to-prevent-autocomplete {
+  height: 0;
+  width: 0;
+  overflow: hidden;
+  border: 0;
+  position: fixed;
+  top: -100px;
+  left: -100px;
+}
+
+/* // Extra small devices (portrait phones, less than 576px) */
+
+@media (max-width: 575.98px) {
+  .panonit-form-buttons-container {
+    float: none;
+    display: block;
+  }
+
+  .panonit-form-buttons-container button {
+    display: block;
+    width: 100%;
+    margin: 0 0 10px !important;
+  }
+
+  .panonit-form-buttons-container button:last-child {
+    margin-bottom: 0 !important;
+  }
+}
+
+/*Z-INDEXES OF ALL ELEMENTS*/
+/**************/
+
+/*  
+  All Angular Material elements z-indexes are determined by .cdk-overlay-container class
+  and have z-index 1000 by default. It is imposible to give z-indexes to separate elements, only is possible
+  to give it to the mentioned class. It is probably the best solution to leave this z-index as is.
+  
+  Following z-indexes are above 1000, because of the Angular Material elements
+  that all have z-index 1000 by default.
+*/
+/*****/
+.panonit-progress-bar {
+  z-index: 1001 !important;
+}
+/*****/
+
+#panonit-header {
+  z-index: 5 !important;
+}
+
+#panonit-sidebar {
+  z-index: 4 !important;
+}
+
+#panonit-sidebar-backdrop {
+  z-index: 3 !important;
+}
+
+#panonit-scroll-to-top-button {
+  z-index: 2 !important;
+}
+
+#panonit-footer {
+  z-index: 1 !important;
+}
+
+/**************/

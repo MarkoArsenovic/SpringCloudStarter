@@ -1,0 +1,74 @@
+<div class="panonit-sidebar-container">
+
+  <div [@.disabled]="animationsDisabled" class="panonit-sidebar-tabs-container">
+    <ul class="nav flex-column">
+
+      <li class="nav-item" matRipple>
+        <div class="nav-link panonit-sidebar-top-level-link" routerLinkActive="panonit-active-sidebar-tab"
+          routerLink="/about-us">
+          <span class="panonit-sidebar-left-element">
+            <span class="panonit-sidebar-icon-container">
+              <img class="panonit-sidebar-icon" src="../../assets/images/logos/panonit_logo.png" style="width: 25px;">
+            </span>
+            <span class="panonit-sidebar-link-text">About Us</span>
+          </span>
+        </div>
+      </li>
+
+      <li class="nav-item" matRipple>
+        <div class="nav-link panonit-sidebar-top-level-link" routerLinkActive="panonit-active-sidebar-tab"
+          routerLink="/microservices">
+          <span class="panonit-sidebar-left-element">
+            <img class="panonit-sidebar-icon" src="../../assets/images/icons/icons8-network-64.png">
+            <span class="panonit-sidebar-link-text">Microservices</span>
+          </span>
+        </div>
+      </li>
+
+      <li *hasPermission="[services.iam.name]; op 'OR_ALL'" class="nav-item" [routerLinkActiveOptions]="{exact: true}"
+        routerLinkActive="panonit-active-sidebar-tab-parent">
+        <div class="nav-link panonit-sidebar-top-level-link" (click)="toggleDropDown('slideAnimationStateIam')">
+          <span class="panonit-sidebar-left-element">
+            <img class="panonit-sidebar-icon" src="../../assets/images/icons/icons8-network-2-64.png">
+            <span class="panonit-sidebar-link-text">IAM</span>
+          </span>
+          <span class="panonit-sidebar-right-element">
+            <i [@iconRotateIam]="slideAnimationStates.slideAnimationStateIam" class="fas fa-angle-down"></i>
+          </span>
+        </div>
+        <ul [@slideToggleIam]="slideAnimationStates.slideAnimationStateIam"
+          class="nav flex-column panonit-dropdown-links-container">
+          <li class="nav-item">
+            <a matRipple href="" routerLinkActive="panonit-active-sidebar-tab" routerLink="/iam/users" class="nav-link">
+              <span class="panonit-sidebar-link-text">Users</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a matRipple href="" routerLinkActive="panonit-active-sidebar-tab" routerLink="/iam/roles" class="nav-link">
+              <span class="panonit-sidebar-link-text">Roles</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a matRipple href="" routerLinkActive="panonit-active-sidebar-tab" routerLink="/iam/services" class="nav-link">
+              <span class="panonit-sidebar-link-text">Services</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a matRipple href="" routerLinkActive="panonit-active-sidebar-tab" routerLink="/iam/permissions"
+              class="nav-link">
+              <span class="panonit-sidebar-link-text">Permissions</span>
+            </a>
+          </li>
+        </ul>
+      </li>
+
+    </ul>
+  </div>
+
+  <div class="panonit-sidebar-atribution-container">
+    <div>
+      Icons used application wide: from <a href="https://icons8.com/" title="icons8" target="blank" rel="noopener">www.icons8.com</a>
+    </div>
+  </div>
+
+</div>

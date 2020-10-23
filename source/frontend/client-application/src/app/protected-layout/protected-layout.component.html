@@ -1,0 +1,19 @@
+<app-progress-bar></app-progress-bar>
+
+<div #userDashboardWrapper id="panonit-user-dashboard-wrapper">
+    <div id="panonit-header">
+        <app-header (toggleSidebarEvent)="toggleSidebar()"></app-header>
+    </div>
+    <div id="panonit-sidebar">
+        <app-sidebar></app-sidebar>
+    </div>
+    <div (click)="hideSidebar('mobile')" id="panonit-sidebar-backdrop"></div>
+    <div id="panonit-scrollable-dashboard-fraction">
+        <div id="panonit-main" [ngClass]="{'panonit-on-about-us-page': onAboutUsPage}">
+            <router-outlet></router-outlet>
+        </div>
+        <div id="panonit-footer">
+            <app-footer></app-footer>
+        </div>
+    </div>
+</div>

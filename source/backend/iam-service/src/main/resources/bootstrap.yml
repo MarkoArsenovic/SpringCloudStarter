@@ -1,0 +1,63 @@
+server:
+  port: 8010
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  application:
+    name: iam-service
+  profiles:
+    active:
+    - development
+  cloud:
+    consul:
+      discovery:
+        prefer-ip-address: true
+        register-health-check: true
+    loadbalancer:
+      ribbon:
+        enabled: false
+    config:
+      fail-fast: false
+      retry:
+        max-attempts: 50
+        max-interval: 2000
+        initial-interval: 2000
+        multiplier: 1.5
+  datasource:
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    database: POSTGRESQL
+    hibernate:
+      ddl-auto: none
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+        - bus-refresh
+        - health
+        
+---
+
+spring:
+  profiles: development
+  cloud:
+    config:
+      fail-fast: false
+      uri:
+      - http://localhost:8888
+    
+---
+
+spring:
+  profiles: production
+  cloud:
+    config:
+      fail-fast: true
+      uri:
+      - http://config-server:8888
+
+

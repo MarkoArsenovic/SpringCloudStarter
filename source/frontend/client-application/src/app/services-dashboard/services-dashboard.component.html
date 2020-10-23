@@ -1,0 +1,108 @@
+<div id="panonit-dashboard-container">
+
+  <div class="d-flex align-items-center justify-content-between panonit-dashboard-first-row">
+
+    <h3>Services</h3>
+
+    <i *hasPermission="[iamServiceName + permissionStrings.canWrite]" (click)="openCreationForm()"
+      [matTooltip]="'Create New Service'" [matTooltipPosition]="'left'" [matTooltipClass]="'panonit-tooltip'"
+      class="fas fa-plus-square"></i>
+
+  </div>
+
+  <div class="panonit-dashboard-second-row">
+    <div class="wizard">
+      <a>
+        IAM
+      </a>
+      <a class="active">
+        Services
+      </a>
+    </div>
+  </div>
+
+  <div class="panonit-dashboard-description">
+    The purpose of services is to handle permissions for the defined roles. A certain role has a certain permission
+    for a certain service.
+    You can see this in action on the <a href="" routerLink="/iam/permissions">permissions</a> page.
+    Adding and removing services should be done in accordance with the application development process.
+    This means that adding of a service as itself will not have any effect, if it is not handled by developers
+    during application development.
+    Similar to that, if not done in accordance with the application development,
+    removal of an existing functional service could have unwanted effects on the application.
+  </div>
+
+  <ng-container *hasPermission="[iamServiceName + permissionStrings.canRead]">
+
+    <div class="container-fluid panonit-filter-fields-bootstrap-container">
+      <div class="row panonit-filter-fields-bootstrap-row">
+
+        <div class="panonit-table-filter-container col-12">
+          <mat-form-field class="panonit-table-filter panonit-table-default-filter-input-container">
+            <input class="panonit-table-default-filter-input" [(ngModel)]="tableDefaultFilterInput" matInput
+              (ngModelChange)="defaultFilter($event)" placeholder="Filter" #input>
+          </mat-form-field>
+          <span *ngIf="tableDefaultFilterInput" class="panonit-clear-filter-container">
+            <i class="panonit-clear-filter" class="far fa-times-circle" (click)="clearDefaultFilter()"
+              [matTooltip]="'Clear Filter'" [matTooltipPosition]="'above'" [matTooltipClass]="'panonit-tooltip'"></i>
+          </span>
+        </div>
+
+      </div>
+    </div>
+
+
+    <div class="mat-elevation-z8">
+      <div class="panonit-table-overflow-div">
+        <table mat-table [dataSource]="dataSource" matSort>
+
+          <ng-container matColumnDef="displayName">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+            <td data-th="Name:" mat-cell *matCellDef="let row"> {{row.displayName}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="description">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Description </th>
+            <td data-th="Description:" mat-cell *matCellDef="let row">
+              {{row.description ? row.description : '&nbsp;'}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef class="panonit-actions-table-header">Operations</th>
+            <td data-th="Operations:" mat-cell class="panonit-actions-table-cell" *matCellDef="let row">
+              <i *hasPermission="[iamServiceName + permissionStrings.canUpdate]" class="far fa-edit"
+                (click)="editService(row)" [matTooltip]="'Edit service'" [matTooltipPosition]="'above'"
+                [matTooltipClass]="'panonit-tooltip'"></i>
+              <i *hasPermission="[iamServiceName + permissionStrings.canDelete]" class="far fa-trash-alt"
+                (click)="removeService(row)" [matTooltip]="'Remove service'" [matTooltipPosition]="'above'"
+                [matTooltipClass]="'panonit-tooltip'"></i>
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr class="panonit-table-row" mat-row *matRowDef="let row; columns: displayedColumns;">
+          </tr>
+
+          <!-- Row shown when there is no matching data. -->
+          <tr class="mat-row" *matNoDataRow>
+            <td class="mat-cell" colspan="3" style="text-align: left;">No data matching the filter "{{input.value}}"
+            </td>
+          </tr>
+
+        </table>
+      </div>
+
+      <mat-paginator class="panonit-table-paginator" [pageSize]="25" [pageSizeOptions]="[5, 10, 25, 100]">
+      </mat-paginator>
+
+
+    </div>
+
+    <!-- Copyright 2019 Google Inc. All Rights Reserved.
+          Use of this source code is governed by an MIT-style license that
+          can be found in the LICENSE file at http://angular.io/license -->
+
+  </ng-container>
+
+
+</div>

@@ -1,0 +1,62 @@
+<form (ngSubmit)="register()" [formGroup]="registerForm">
+
+  <mat-form-field appearance="fill">
+    <mat-label>First Name:</mat-label>
+    <input matInput formControlName="name">
+    <mat-error *ngIf="f.name.errors?.required">This field is required</mat-error>
+    <mat-error *ngIf="f.name.errors?.maxlength">Maximum 30 characters allowed</mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Last Name:</mat-label>
+    <input matInput formControlName="lastname">
+    <mat-error *ngIf="f.lastname.errors?.required">This field is required</mat-error>
+    <mat-error *ngIf="f.lastname.errors?.maxlength">Maximum 30 characters allowed</mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Username:</mat-label>
+    <input matInput formControlName="username">
+    <mat-error *ngIf="f.username.errors?.required">This field is required</mat-error>
+    <mat-error *ngIf="f.username.errors?.maxlength">Maximum 30 characters allowed</mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Email:</mat-label>
+    <input matInput formControlName="email">
+    <mat-error *ngIf="f.email.errors?.required">This field is required</mat-error>
+    <mat-error *ngIf="f.email.errors?.maxlength">Maximum 70 characters allowed</mat-error>
+    <mat-error *ngIf="f.email.errors?.email">Email not valid</mat-error>
+  </mat-form-field>
+
+  <ng-container formGroupName="passwords">
+
+    <mat-form-field appearance="fill">
+      <mat-label>Password:</mat-label>
+      <input [type]="'password'" matInput formControlName="password">
+      <mat-error *ngIf="getNestedFormControl('passwords', 'password').errors?.required">This field is required
+      </mat-error>
+      <mat-error *ngIf="getNestedFormControl('passwords', 'password').errors?.maxlength">Maximum 70 characters
+        allowed</mat-error>
+      <mat-error *ngIf="getNestedFormControl('passwords', 'password').errors?.minlength">Minimum 8 characters
+        required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Confirm Password:</mat-label>
+      <input [type]="'password'" [errorStateMatcher]="errorMatcher" matInput formControlName="confirmPassword">
+      <mat-error *ngIf="getNestedFormControl('passwords', 'confirmPassword').errors?.required">This field is required
+      </mat-error>
+      <mat-error *ngIf="f.passwords.errors?.unmatchingPasswords">Passwords don't match</mat-error>
+    </mat-form-field>
+
+  </ng-container>
+
+  <button type="submit" mat-stroked-button id="panonit-submit-button">Register</button>
+
+</form>
+
+<div class="d-flex align-items-center justify-content-between" id="panonit-links-container">
+  <a href="" routerLink="/login">Login</a>
+  <a href="" routerLink="/forgot-password">Forgot Password</a>
+</div>

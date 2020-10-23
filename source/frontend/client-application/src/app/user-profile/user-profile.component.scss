@@ -1,0 +1,75 @@
+.card-header h5 {
+    margin-bottom: 0;
+}
+
+#panonit-user-profile-data-wrapper .card-body {
+    overflow-x: auto;
+}
+
+.panonit-user-profile-data-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.panonit-user-profile-table {
+    max-width: 700px;
+}
+
+.panonit-user-profile-table th, .panonit-user-profile-table td {
+    border-width: 0;
+}
+
+.panonit-user-profile-image-container {
+    margin-left: 15px;
+}
+
+.panonit-user-profile-image {
+    width: 100%;
+    max-width: 115px;
+    min-width: 100px;
+}
+
+@media (min-width: 1600px) {
+    #panonit-user-profile-data-wrapper {
+        max-width: 83.333333%;
+    }
+}
+
+@media (min-width: 2000px) {
+    #panonit-user-profile-data-wrapper {
+        max-width: 75%;
+    }
+}
+
+@media (min-width: 2250px) {
+    #panonit-user-profile-data-wrapper {
+        max-width: 66.666667%;
+    }
+}
+
+
+/* Extra small devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) {
+
+    .panonit-user-profile-data-container {
+        flex-direction: column-reverse;
+    }
+
+    .panonit-user-profile-image-container {
+        margin-left: 0;
+        margin-bottom: 10px;
+    }
+
+    .panonit-user-profile-table th, .panonit-user-profile-table td {
+        display: block;
+        padding: 5px;
+    }
+
+    .panonit-user-profile-table tr {
+        border-top: 1px solid #dee2e6;
+    }
+
+    .panonit-user-profile-table tr:first-child {
+        border-top: none;
+    }
+}

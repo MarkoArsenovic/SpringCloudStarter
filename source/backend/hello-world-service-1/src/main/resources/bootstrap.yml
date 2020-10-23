@@ -1,0 +1,55 @@
+server:
+  port: 8035
+
+spring:
+  application:
+    name: hello-world-service-1
+  profiles:
+    active:
+    - development
+  cloud:
+    consul:
+      discovery:
+        prefer-ip-address: true
+        register-health-check: true
+    loadbalancer:
+      ribbon:
+        enabled: false
+    config:
+      fail-fast: false
+      retry:
+        max-attempts: 50
+        max-interval: 2000
+        initial-interval: 2000
+        multiplier: 1.5
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+        - bus-refresh
+        - health
+
+---
+
+spring:
+  profiles: development
+  cloud:
+    config:
+      fail-fast: false
+      uri:
+      - http://localhost:8888
+        
+---
+
+spring:
+  profiles: production
+  cloud:
+    config:
+      fail-fast: true
+      uri:
+      - http://config-server:8888
+        
+        
+        
+

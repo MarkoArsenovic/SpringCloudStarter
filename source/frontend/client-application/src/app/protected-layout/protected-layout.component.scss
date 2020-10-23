@@ -1,0 +1,125 @@
+#panonit-header {
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.3);
+    background-color: #fff;
+    height: 80px;
+    width: 100%;
+    position: fixed;
+    top: 0;
+}
+
+#panonit-sidebar {
+    position: fixed;
+    top: 80px;
+    bottom: 0;
+    left: 0;
+    box-shadow: 6px 0 6px rgba(0, 0, 0, 0.1);
+    background: linear-gradient(
+            180deg,
+            rgba(255, 255, 255, 1) 0%,
+            rgba(255, 255, 255, 0.7) 70%,
+            rgba(255, 255, 255, 0.5) 100%
+        ),
+        url(../../assets/images/cloud-computing-2001090_1280.jpg);
+    background-size: cover;
+    background-position: center;
+    transition: none;
+    overflow: auto;
+    width: 250px;
+}
+
+#panonit-sidebar-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(51, 51, 51, 0.8);
+    overflow: auto;
+    pointer-events: none;
+    opacity: 0;
+    transition: none;
+}
+
+#panonit-scrollable-dashboard-fraction {
+    margin-left: 250px;
+    margin-top: 80px;
+    min-height: calc(100vh - 80px);
+    display: grid;
+    grid-template-rows: 1fr auto;
+}
+
+#panonit-main {
+    padding: 30px;
+    padding-bottom: 40px;
+    background-color: #e8e8e8;
+    overflow-x: hidden;
+    position: relative;
+}
+
+.panonit-on-about-us-page {
+    background: 
+    linear-gradient(
+        to bottom,
+      rgba(255, 255, 255, 0.9),
+      rgba(255, 255, 255, 0.8)
+    ),
+    url('../../assets/images/Panonit-Team.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+@media (max-width: 991.98px) {
+    #panonit-sidebar {
+        box-shadow: none;
+        transform: translateX(-100%);
+    }
+
+    #panonit-user-dashboard-wrapper.sidebar-shown-mobile #panonit-sidebar {
+        display: block;
+        position: fixed;
+        height: auto;
+        transform: translateX(0%);
+        box-shadow: 6px 0 6px rgba(0, 0, 0, 0.1);
+        transition: transform 300ms ease-in-out;
+    }
+
+    #panonit-user-dashboard-wrapper.sidebar-shown-mobile #panonit-sidebar-backdrop {
+        opacity: 1;
+        pointer-events: all;
+    }
+
+    #panonit-user-dashboard-wrapper.sidebar-hidden-mobile #panonit-sidebar {
+        box-shadow: none;
+        transform: translateX(-100%);
+        transition: transform 300ms ease-in-out;
+    }
+
+    #panonit-sidebar-backdrop {
+        transition: opacity 300ms ease-in-out;
+    }
+
+    #panonit-scrollable-dashboard-fraction {
+        margin-left: 0;
+    }
+}
+
+@media (min-width: 992px) {
+    #panonit-user-dashboard-wrapper.sidebar-hidden-desktop #panonit-sidebar {
+        box-shadow: none;
+        transform: translateX(-100%);
+        transition: transform 300ms ease-in-out;
+    }
+
+    #panonit-user-dashboard-wrapper.sidebar-hidden-desktop #panonit-scrollable-dashboard-fraction {
+        margin-left: 0;
+        transition: margin-left 300ms ease-in-out;
+    }
+
+    #panonit-user-dashboard-wrapper.sidebar-shown-desktop #panonit-sidebar {
+        transition: transform 300ms ease-in-out;
+    }
+
+    #panonit-user-dashboard-wrapper.sidebar-shown-desktop #panonit-scrollable-dashboard-fraction {
+        transition: margin-left 300ms ease-in-out;
+    }
+}

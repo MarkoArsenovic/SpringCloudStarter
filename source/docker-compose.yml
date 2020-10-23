@@ -1,0 +1,141 @@
+version: '3'
+services:
+
+  consul:
+    hostname: consul
+    build:
+      context: ./backend/service-registry
+      dockerfile: ./Dockerfile
+    ports:
+      - "8500:8500"
+      - "8600:8600/udp"
+    networks:
+      - custom_metwork
+
+  rabbit:
+    hostname: rabbit
+    build:
+      context: ./backend/rabbitmq
+      dockerfile: ./Dockerfile
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    networks:
+      - custom_metwork
+
+  iam_db:
+    hostname: iam_db
+    build:
+      context: ./backend/database
+      dockerfile: ./Dockerfile
+    restart: always
+    ports:
+      - "5000:5432"
+    networks:
+      - custom_metwork
+    volumes:
+      - "showcase_app_db:/var/lib/postgresql/data"
+
+  api-gateway:
+    hostname: api-gateway
+    build:
+      context: ./backend/api-gateway
+      dockerfile: ./Dockerfile
+    ports:
+      - "8765:8765"
+    depends_on:
+      - consul
+      - rabbit
+      - config-server
+    networks:
+      - custom_metwork
+
+  config-server:
+    hostname: config-server
+    build:
+      context: ./backend/config-server
+      dockerfile: ./Dockerfile
+    environment:
+      - JAVA_OPTS=-Dspring.profiles.active=production -Dspring.cloud.config.server.git.username=$GITLAB_EMAIL -Dspring.cloud.config.server.git.password=$GITLAB_PASSWORD
+    ports:
+      - "8888:8888"
+    depends_on:
+      - consul
+      - rabbit
+    networks:
+      - custom_metwork
+
+  iam-service:
+    hostname: iam-service
+    build:
+      context: ./backend/iam-service
+      dockerfile: ./Dockerfile
+    ports:
+      - "8010:8010"
+    depends_on:
+      - consul
+      - iam_db
+      - rabbit
+      - config-server
+    networks:
+      - custom_metwork
+
+  hello-world-service:
+    hostname: hello-world-service
+    build:
+      context: ./backend/hello-world-service
+      dockerfile: ./Dockerfile
+    ports:
+      - "8020:8020"
+    depends_on:
+      - consul
+      - rabbit
+      - config-server
+    networks:
+      - custom_metwork
+
+  hello-world-service-1:
+    hostname: hello-world-service-1
+    build:
+      context: ./backend/hello-world-service-1
+      dockerfile: ./Dockerfile
+    ports:
+      - "8035:8035"
+    depends_on:
+      - consul
+      - rabbit
+      - config-server
+    networks:
+      - custom_metwork
+
+  example-service:
+    hostname: example-service
+    build:
+      context: ./backend/example-service
+      dockerfile: ./Dockerfile
+    ports:
+      - "8030:8030"
+    depends_on:
+      - consul
+      - rabbit
+      - config-server
+    networks:
+      - custom_metwork
+
+  client-application:
+    build:
+      context: ./frontend/client-application
+      dockerfile: ./Dockerfile
+    ports:
+      - "80:80"
+    depends_on:
+      - api-gateway
+    networks:
+      - custom_metwork
+
+volumes:
+  showcase_app_db:
+
+networks:
+  custom_metwork:
+    driver: bridge

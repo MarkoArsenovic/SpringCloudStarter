@@ -1,0 +1,25 @@
+<div id="panonit-header-container">
+
+    <div class="panonit-left-header-element">
+        <button mat-icon-button class="d-flex align-items-center justify-content-center" (click)="triggerSidebarToggle()">
+            <i class="fas fa-bars panonit-hamburger-menu"></i>
+        </button>
+    </div>
+
+    <div class="panonit-central-header-element">
+        <a href="http://panonit.com/" target="blank" rel="noopener">
+            <img id="panonit-logo" src="../../assets/images/logos/logo.png" alt="">
+        </a>
+    </div>
+
+    <div class="panonit-right-header-element">
+        <span matRipple id="panonit-user-profile-button" [matMenuTriggerFor]="userMenu">{{userFirstNameFirstLetter}}</span>
+    </div>
+
+</div>
+
+
+<mat-menu #userMenu="matMenu" xPosition="before">
+    <button mat-menu-item routerLink="/my-profile"><i class="far fa-user"></i>&nbsp;My Profile</button>
+    <button mat-menu-item (click)="logout()"><i class="fas fa-sign-out-alt"></i>&nbsp;Logout</button>
+</mat-menu>

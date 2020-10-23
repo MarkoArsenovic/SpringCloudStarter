@@ -1,0 +1,13 @@
+.panonit-checkboxes-container {
+    display: inline-block;
+}
+
+.panonit-checkboxes-container-label {
+    display: block;
+}
+
+.panonit-checkboxes-container.ng-touched.ng-invalid {
+    border: 1px solid #f44336;
+    box-shadow: 0 0 0 0.2rem rgba(244, 67, 54, 0.25);
+    padding: 0 5px;
+}

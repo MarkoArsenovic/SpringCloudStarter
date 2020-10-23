@@ -1,0 +1,59 @@
+<div mat-dialog-title class="panonit-dialog-header d-flex justify-content-between">
+    <h4>{{data ? 'Update Service' : 'Create New Service'}}</h4>
+    <button mat-dialog-close class="panonit-close-icon-container" tabindex="-1"><i
+        class="panonit-close-icon fas fa-times"></i></button>
+  </div>
+  <mat-dialog-content class="mat-typography">
+    <div class="container">
+      <div class="row">
+  
+        <form (ngSubmit)="submitForm()" class="col-lg-12" #f="ngForm">
+
+          <ng-container *ngIf="data; else creationCase">
+          
+            <div class="form-group">
+              <label for="serviceName">Name:</label>
+              <input id="serviceName" type="text" name="serviceName" class="form-control" ngModel required pattern=".*\S+.*"
+                #serviceName="ngModel" [(ngModel)]="service.displayName" />
+          
+              <div *ngIf="serviceName.invalid && serviceName.touched" class="alert alert-danger">
+                <div *ngIf="serviceName.errors.required || serviceName.errors.pattern">This field is required</div>
+              </div>
+          
+            </div>
+          
+          </ng-container>
+          
+          <ng-template #creationCase>
+          
+            <div class="form-group">
+              <label for="serviceName">Name:</label>
+              <input id="serviceName" type="text" name="serviceName" class="form-control" ngModel required pattern=".*\S+.*"
+                #serviceName="ngModel" [(ngModel)]="service.name" />
+          
+              <div *ngIf="serviceName.invalid && serviceName.touched" class="alert alert-danger">
+                <div *ngIf="serviceName.errors.required || serviceName.errors.pattern">This field is required</div>
+              </div>
+          
+            </div>
+          
+          </ng-template>
+
+          <div class="form-group">
+            <label for="description">Description:</label>
+            <input id="description" type="text" name="description" class="form-control" ngModel
+              #description="ngModel" [(ngModel)]="service.description" />
+          </div>
+  
+          <div class="panonit-form-buttons-container">
+            <button type="submit" mat-stroked-button [disabled]="!f.valid"> {{data ? 'Update' : 'Create'}}
+            </button>
+            <button mat-stroked-button mat-dialog-close>Cancel</button>
+          </div>
+        </form>
+  
+      </div>
+  
+    </div>
+  </mat-dialog-content>
+  

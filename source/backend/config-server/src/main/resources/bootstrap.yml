@@ -1,0 +1,57 @@
+server:
+  port: 8888
+spring:
+  application:
+    name: config-server
+  profiles:
+    active:
+    - development
+  cloud:
+    consul:
+      discovery:
+        prefer-ip-address: true
+        register-health-check: true
+    bus:
+      enabled: true
+    loadbalancer:
+      ribbon:
+        enabled: false
+    config:
+      server:
+        git:
+          uri: https://gitlab.panonit.com/marko.arsenovic/SpringCloudStarter.git #git uri
+          username: ${GITLAB_EMAIL} # env variable which contains git credentials
+          password: ${GITLAB_PASSWORD} # env variable which contains git credentials
+          skip-ssl-validation: true
+          default-label: microservices-config #git branch
+          timeout: 20
+
+---
+
+spring:
+  profiles: development
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: rabbitmq
+    password: rabbitmq
+          
+---
+
+spring:
+  profiles: production
+  cloud:
+    consul:
+      host: consul
+      port: 8500
+  rabbitmq:
+    host: rabbit
+    port: 5672
+    username: rabbitmq
+    password: rabbitmq
+        
+        

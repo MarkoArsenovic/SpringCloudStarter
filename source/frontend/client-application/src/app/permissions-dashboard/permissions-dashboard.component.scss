@@ -1,0 +1,87 @@
+.panonit-submit-button-container {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: #f5f6f6;
+}
+
+.panonit-submit-button-container button {
+    background-color: #fff;
+    width: 100%;
+}
+
+.panonit-service-name{
+    font-weight: bold;
+}
+
+.panonit-table-row {
+    cursor: initial;
+}
+
+.panonit-data-table-container {
+    margin-top: 40px;
+}
+
+.panonit-select-all-column {
+    text-align: right;
+}
+
+.panonit-inline-form-label {
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+.panonit-select-role-dropdown-container {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+#panonit-role-icons {
+    margin-left: 10px;
+}
+
+#panonit-role-icons i{
+    font-size: 22px;
+    margin-left: 5px;
+}
+
+.panonit-disabled-action {
+    opacity: 0.25;
+    cursor: not-allowed;
+}
+
+/* // Small devices (landscape phones, less than 768px) */
+
+@media (max-width: 767.98px) {
+
+    #panonit-role-icons {
+        margin-left: 0;
+    }
+
+    .panonit-select-role-dropdown-container select {
+        margin-bottom: 10px;
+    }
+
+    .panonit-table-header {
+        /* For displaying headers remove this line */
+        display: none;
+    }
+
+    td mat-checkbox {
+        margin-right: 10px;
+    }
+
+    .panonit-submit-button-container{
+        border-bottom: none;
+    }
+
+    .panonit-submit-button-container:hover{
+        background-color: #f5f6f6 !important;
+    }
+
+    .panonit-service-name{
+        text-decoration: underline;
+    }
+}
+

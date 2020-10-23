@@ -1,0 +1,118 @@
+.panonit-sidebar-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 10px 0 0;
+    align-items: center;
+}
+
+a,
+.panonit-sidebar-link-text,
+i {
+    color: #444;
+}
+
+.panonit-sidebar-tabs-container {
+    margin: 15px 0;
+    width: 100%;
+}
+
+.nav-link {
+    overflow-wrap: break-word;
+    word-break: break-word;
+    word-wrap: break-word;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.panonit-sidebar-link-text {
+    position: relative;
+}
+
+.panonit-sidebar-link-text::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #444;
+    transform-origin: bottom left;
+    transition: transform 0.25s ease-out;
+}
+
+.panonit-active-sidebar-tab-parent .panonit-sidebar-top-level-link .panonit-sidebar-link-text::before,
+.panonit-active-sidebar-tab .panonit-sidebar-link-text::before {
+    background-color: #20a9c9;
+}
+
+.nav-link:hover .panonit-sidebar-link-text::before {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+.panonit-active-sidebar-tab-parent .panonit-sidebar-top-level-link .panonit-sidebar-link-text,
+.panonit-active-sidebar-tab .panonit-sidebar-link-text {
+    color: #20a9c9;
+}
+
+.panonit-sidebar-top-level-link {
+    cursor: pointer;
+}
+
+.panonit-sidebar-icon-container {
+    width: 35px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.panonit-sidebar-icon {
+    width: 35px;
+    vertical-align: middle;
+}
+
+.panonit-sidebar-left-element {
+    display: flex;
+    align-items: center;
+}
+
+.panonit-sidebar-left-element .panonit-sidebar-link-text {
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 18px;
+}
+
+.panonit-dropdown-links-container {
+    overflow: hidden;
+    flex-wrap: nowrap;
+}
+
+.panonit-dropdown-links-container a {
+    padding-left: 30px;
+}
+
+.panonit-sidebar-atribution-container {
+    font-size: 11px;
+	font-style: italic;
+	padding: 15px;
+	text-align: center;
+	display: flex;
+    justify-content: center;
+    margin-top: auto;
+    margin-bottom: 15px;
+    background-color: rgba(255, 255, 255, 0.5);
+    width: 80%;
+    border-radius: 15px;
+}
+
+.panonit-sidebar-atribution-container:hover {
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
+.panonit-sidebar-atribution-container a {
+    color: #3095B4;
+}

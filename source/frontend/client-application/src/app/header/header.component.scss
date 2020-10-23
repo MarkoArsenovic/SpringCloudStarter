@@ -1,0 +1,48 @@
+#panonit-header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    padding: 10px;
+    
+    /*
+    Graphcoders Lil Fiber (image cd6d695e.png)
+
+    Background pattern from Toptal Subtle Patterns https://www.toptal.com/designers/subtlepatterns/, 
+    background link https://www.toptal.com/designers/subtlepatterns/graphcoders-lil-fiber/
+    */
+    background-image: linear-gradient(to top, rgba(255,255,255,1) 0%, rgba(255,255,255,0.4) 50%, transparent 100%), url('../../assets/images/bright_squares.png');
+}
+
+.panonit-hamburger-menu {
+    font-size: 20px;
+    color: #444;
+}
+
+.panonit-right-header-element i {
+    cursor: pointer;
+    font-size: 18px;
+    color: #444;
+}
+
+#panonit-user-profile-button {
+    display: inline-flex;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    background-color: rgba(32,169,201, 0.2);
+}
+
+.panonit-right-header-element > * {
+    margin-right: 15px;
+}
+
+/* // Extra small devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) {
+    #panonit-logo {
+        width: 200px;
+    }
+}

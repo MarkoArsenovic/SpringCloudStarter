@@ -1,0 +1,133 @@
+<div id="panonit-dashboard-container">
+
+  <div class="d-flex align-items-center justify-content-between panonit-dashboard-first-row">
+
+    <h3>Permissions</h3>
+
+  </div>
+
+  <div class="panonit-dashboard-second-row">
+    <div class="wizard">
+      <a>
+        IAM
+      </a>
+      <a class="active">
+        Permissions
+      </a>
+    </div>
+  </div>
+
+  <div class="form-group panonit-select-role-dropdown-container">
+    <select [disabled]="allRoles.length === 0 || disableRolesDropdown || !dataSource"
+      *hasPermission="[iamServiceName + permissionStrings.canRead]" class="form-control col-12 col-md-6 col-lg-5"
+      id="exampleFormControlSelect1" [(ngModel)]="selectedRole" (change)="onRoleSwitch(selectedRole)">
+      <option *ngIf="!selectedRole" [ngValue]="null">Select role...</option>
+      <option *ngFor="let role of allRoles" [ngValue]="role">{{role.name}}</option>
+
+    </select>
+  </div>
+
+  <ng-container
+    *hasPermission="[iamServiceName + permissionStrings.canUpdate, iamServiceName + permissionStrings.canRead]; op 'OR'">
+    <div *ngIf="showPermissions && selectedRole" class="panonit-data-table-container mat-elevation-z8">
+      <table mat-table [dataSource]="dataSource">
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef> Service </th>
+          <td data-th="Service:" mat-cell *matCellDef="let element"> <span
+              class="panonit-service-name">{{element.displayName}}</span> </td>
+        </ng-container>
+
+
+
+        <!-- Checkbox Column -->
+        <ng-container matColumnDef="create">
+          <th mat-header-cell *matHeaderCellDef>
+
+            Create
+          </th>
+          <td data-th="Create:" mat-cell *matCellDef="let row">
+            <mat-checkbox [disabled]="disableCheckboxFields" color='primary' (click)="$event.stopPropagation()"
+              (change)="subcribeToPermissionsChanges(); $event ? createSelection.toggle(row) : null"
+              [checked]="createSelection.isSelected(row)" [aria-label]="checkboxLabel(createSelection, row)">
+            </mat-checkbox>
+          </td>
+        </ng-container>
+
+
+        <!-- Checkbox Column -->
+        <ng-container matColumnDef="read">
+          <th mat-header-cell *matHeaderCellDef>
+
+            Read
+          </th>
+          <td data-th="Read:" mat-cell *matCellDef="let row">
+            <mat-checkbox [disabled]="disableCheckboxFields" color='primary' (click)="$event.stopPropagation()"
+              (change)="subcribeToPermissionsChanges(); $event ? readSelection.toggle(row) : null"
+              [checked]="readSelection.isSelected(row)" [aria-label]="checkboxLabel(readSelection, row)">
+            </mat-checkbox>
+          </td>
+        </ng-container>
+
+
+        <!-- Checkbox Column -->
+        <ng-container matColumnDef="update">
+          <th mat-header-cell *matHeaderCellDef>
+
+            Update
+          </th>
+          <td data-th="Update:" mat-cell *matCellDef="let row">
+            <mat-checkbox [disabled]="disableCheckboxFields" color='primary' (click)="$event.stopPropagation()"
+              (change)="subcribeToPermissionsChanges(); $event ? updateSelection.toggle(row) : null"
+              [checked]="updateSelection.isSelected(row)" [aria-label]="checkboxLabel(updateSelection, row)">
+            </mat-checkbox>
+          </td>
+        </ng-container>
+
+
+        <!-- Checkbox Column -->
+        <ng-container matColumnDef="delete">
+          <th mat-header-cell *matHeaderCellDef>
+
+            Delete
+          </th>
+          <td data-th="Delete:" mat-cell *matCellDef="let row">
+            <mat-checkbox [disabled]="disableCheckboxFields" color='primary' (click)="$event.stopPropagation()"
+              (change)="subcribeToPermissionsChanges(); $event ? deleteSelection.toggle(row) : null"
+              [checked]="deleteSelection.isSelected(row)" [aria-label]="checkboxLabel(deleteSelection, row)">
+            </mat-checkbox>
+          </td>
+        </ng-container>
+
+
+        <!-- Checkbox Column -->
+        <ng-container matColumnDef="toggleRow">
+          <th mat-header-cell *matHeaderCellDef class="panonit-select-all-column">Select all</th>
+          <td data-th="Select all:" mat-cell *matCellDef="let row" class="panonit-select-all-column">
+            <mat-checkbox [disabled]="disableCheckboxFields" color='primary' (change)="toggleRow(row)"
+              [checked]="isWholeRowSelected(row)" [indeterminate]="isAnythingInRowSelected(row)" labelPosition="before">
+
+            </mat-checkbox>
+
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns" class="panonit-table-header"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="panonit-table-row">
+        </tr>
+
+      </table>
+
+    </div>
+
+    <!-- Copyright 2019 Google Inc. All Rights Reserved.
+          Use of this source code is governed by an MIT-style license that
+          can be found in the LICENSE file at http://angular.io/license -->
+
+  </ng-container>
+
+
+
+
+</div>
